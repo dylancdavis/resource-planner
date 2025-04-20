@@ -21,8 +21,8 @@ import HelloWorld from './components/HelloWorld.vue'
                     to="/about"
                     class="asdf"
                 >
-                    About</RouterLink
-                >
+                    About
+                </RouterLink>
             </nav>
         </div>
     </header>
