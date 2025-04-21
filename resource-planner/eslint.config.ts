@@ -10,26 +10,28 @@ import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 // More info at https://github.com/vuejs/eslint-config-typescript/#advanced-setup
 
 export default defineConfigWithVueTs(
-  {
-    name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
-  },
-  {
-    'vue/block-order': [
-      'error',
-      {
-        order: [['script', 'template'], 'style'],
-      },
-    ],
-  },
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+    {
+        name: 'app/files-to-lint',
+        files: ['**/*.{ts,mts,tsx,vue}'],
+    },
+    globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
 
-  pluginVue.configs['flat/essential'],
-  vueTsConfigs.recommended,
+    pluginVue.configs['flat/essential'],
+    vueTsConfigs.recommended,
 
-  {
-    ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
-  },
-  skipFormatting,
+    {
+        ...pluginVitest.configs.recommended,
+        files: ['src/**/__tests__/*'],
+    },
+    skipFormatting,
+    {
+        rules: {
+            'vue/block-order': [
+                'error',
+                {
+                    order: ['template', 'script', 'style'],
+                },
+            ],
+        },
+    },
 )
