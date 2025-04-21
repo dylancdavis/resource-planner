@@ -26,6 +26,6 @@ export default {
 <style lang="scss">
 main {
     padding: 16px;
-    flex: 1
+    flex: 1;
 }
 </style>

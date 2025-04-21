@@ -1,8 +1,6 @@
 <template>
     <header>
-        <h1>
-            Recipe Planner
-        </h1>
+        <h1>Recipe Planner</h1>
     </header>
 </template>
 

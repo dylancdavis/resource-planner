@@ -1,5 +1,5 @@
 <template>
-    <BaseLayout> 
+    <BaseLayout>
         <h2>Welcome to Recipe Planner</h2>
         <span>Please begin by uploading a recipe below.</span>
     </BaseLayout>
@@ -10,7 +10,7 @@ import BaseLayout from '../components/BaseLayout.vue'
 export default {
     name: 'HomeView',
     components: {
-        BaseLayout
-    }
+        BaseLayout,
+    },
 }
 </script>
