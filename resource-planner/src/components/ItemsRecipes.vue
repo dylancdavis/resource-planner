@@ -45,6 +45,13 @@ export default {
             this.itemName = ''
             this.itemID++
         },
+        resetInputs() {
+            this.recipeName = ''
+            this.itemInputID = ''
+            this.itemInputQuantity = 0
+            this.itemOutputID = ''
+            this.itemOutputQuantity = 0
+        },
         addRecipe() {
             this.recipes.push({
                 id: this.recipeID,
@@ -58,13 +65,8 @@ export default {
                     quantity: this.itemOutputQuantity,
                 },
             })
-
-            this.recipeName = ''
             this.recipeID++
-            this.itemInputID = ''
-            this.itemInputQuantity = 0
-            this.itemOutputID = ''
-            this.itemOutputQuantity = 0
+            this.resetInputs()
         },
     },
 }
