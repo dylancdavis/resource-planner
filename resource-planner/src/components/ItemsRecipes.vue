@@ -106,7 +106,7 @@ export default {
                             </button>
                         </td>
                     </tr>
-                    <tr v-for="item in items">
+                    <tr v-for="item in items" :key="item.id">
                         <td>{{ item.id }}</td>
                         <td>{{ item.name }}</td>
                     </tr>
@@ -188,7 +188,7 @@ export default {
                             </button>
                         </td>
                     </tr>
-                    <tr v-for="recipe in recipes">
+                    <tr v-for="recipe in recipes" :key="recipe.id">
                         <td>{{ recipe.id }}</td>
                         <td>{{ recipe.name }}</td>
                         <td>
