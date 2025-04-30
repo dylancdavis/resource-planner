@@ -32,7 +32,10 @@
                             </button>
                         </td>
                     </tr>
-                    <tr v-for="item in items" :key="item.id">
+                    <tr
+                        v-for="item in items"
+                        :key="item.id"
+                    >
                         <td>{{ item.id }}</td>
                         <td>{{ item.name }}</td>
                     </tr>
@@ -114,7 +117,10 @@
                             </button>
                         </td>
                     </tr>
-                    <tr v-for="recipe in recipes" :key="recipe.id">
+                    <tr
+                        v-for="recipe in recipes"
+                        :key="recipe.id"
+                    >
                         <td>{{ recipe.id }}</td>
                         <td>{{ recipe.name }}</td>
                         <td>
