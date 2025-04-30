@@ -1,19 +1,19 @@
 <script lang="ts">
 type Item = {
-    id: Number
-    name: String
+    id: number
+    name: string
 }
 
 type Recipe = {
-    id: Number
-    name: String
+    id: number
+    name: string
     input: {
-        itemID: Number
-        quantity: Number
+        itemID: number
+        quantity: number
     }
     output: {
-        itemID: Number
-        quantity: Number
+        itemID: number
+        quantity: number
     }
 }
 
