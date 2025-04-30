@@ -157,7 +157,7 @@ export default {
                                 v-model="itemOutputID"
                                 :disabled="items.length === 0"
                             >
-                                <option value="">Select an Input</option>
+                                <option value="">Select an Output</option>
                                 <option
                                     v-for="item in items"
                                     :key="item.id.toString()"
