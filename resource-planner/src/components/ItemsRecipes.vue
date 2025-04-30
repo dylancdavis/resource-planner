@@ -1,77 +1,3 @@
-<script lang="ts">
-type Item = {
-    id: number
-    name: string
-}
-
-type Recipe = {
-    id: number
-    name: string
-    input: {
-        itemID: number
-        quantity: number
-    }
-    output: {
-        itemID: number
-        quantity: number
-    }
-}
-
-export default {
-    name: 'ItemsRecipes',
-
-    data() {
-        return {
-            itemID: 0,
-            recipeID: 0,
-            itemName: '',
-            recipeName: '',
-            itemInputID: '',
-            itemInputQuantity: 0,
-            itemOutputID: '',
-            itemOutputQuantity: 0,
-            items: [] as Item[],
-            recipes: [] as Recipe[],
-        }
-    },
-
-    methods: {
-        addItem() {
-            this.items.push({
-                id: this.itemID,
-                name: this.itemName,
-            })
-
-            this.itemName = ''
-            this.itemID++
-        },
-        resetInputs() {
-            this.recipeName = ''
-            this.itemInputID = ''
-            this.itemInputQuantity = 0
-            this.itemOutputID = ''
-            this.itemOutputQuantity = 0
-        },
-        addRecipe() {
-            this.recipes.push({
-                id: this.recipeID,
-                name: this.recipeName,
-                input: {
-                    itemID: Number(this.itemInputID),
-                    quantity: this.itemInputQuantity,
-                },
-                output: {
-                    itemID: Number(this.itemOutputID),
-                    quantity: this.itemOutputQuantity,
-                },
-            })
-            this.recipeID++
-            this.resetInputs()
-        },
-    },
-}
-</script>
-
 <template>
     <!-- "this is way too big and should be refactored immediately!!" -->
     <!-- "yes." -->
@@ -207,6 +133,80 @@ export default {
         </div>
     </div>
 </template>
+
+<script lang="ts">
+type Item = {
+    id: number
+    name: string
+}
+
+type Recipe = {
+    id: number
+    name: string
+    input: {
+        itemID: number
+        quantity: number
+    }
+    output: {
+        itemID: number
+        quantity: number
+    }
+}
+
+export default {
+    name: 'ItemsRecipes',
+
+    data() {
+        return {
+            itemID: 0,
+            recipeID: 0,
+            itemName: '',
+            recipeName: '',
+            itemInputID: '',
+            itemInputQuantity: 0,
+            itemOutputID: '',
+            itemOutputQuantity: 0,
+            items: [] as Item[],
+            recipes: [] as Recipe[],
+        }
+    },
+
+    methods: {
+        addItem() {
+            this.items.push({
+                id: this.itemID,
+                name: this.itemName,
+            })
+
+            this.itemName = ''
+            this.itemID++
+        },
+        resetInputs() {
+            this.recipeName = ''
+            this.itemInputID = ''
+            this.itemInputQuantity = 0
+            this.itemOutputID = ''
+            this.itemOutputQuantity = 0
+        },
+        addRecipe() {
+            this.recipes.push({
+                id: this.recipeID,
+                name: this.recipeName,
+                input: {
+                    itemID: Number(this.itemInputID),
+                    quantity: this.itemInputQuantity,
+                },
+                output: {
+                    itemID: Number(this.itemOutputID),
+                    quantity: this.itemOutputQuantity,
+                },
+            })
+            this.recipeID++
+            this.resetInputs()
+        },
+    },
+}
+</script>
 
 <style lang="scss">
 .table-wrapper {
