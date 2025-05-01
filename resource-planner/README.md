@@ -1,45 +1,17 @@
 # resource-planner
 
-This template should help get you started developing with Vue 3 in Vite.
+Web application for visualizing raw and intermediate resources required to produce a final product.
+Built with [Vue](https://vuejs.org/) and [Vite](https://vite.dev/). Package management performed with [`pnpm`](https://pnpm.io/).
 
-## Recommended IDE Setup
+## Installing / Getting started
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+To run a local server, execute the following:
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+```shell
+cd resource-planner
 pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The web server can then be accessed at http://localhost:5173/.
 
-```sh
-pnpm build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-pnpm test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
