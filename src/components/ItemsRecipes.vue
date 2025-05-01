@@ -2,46 +2,10 @@
     <!-- "this is way too big and should be refactored immediately!!" -->
     <!-- "yes." -->
     <div class="table-wrapper">
-        <div>
-            <h2>Items</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Item Name</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ itemID }}</td>
-                        <td>
-                            <input
-                                v-model="itemName"
-                                type="text"
-                                placeholder="item name"
-                            />
-                        </td>
-                        <td>
-                            <button
-                                type="button"
-                                @click="addItem"
-                                :disabled="itemName === ''"
-                            >
-                                Add Item
-                            </button>
-                        </td>
-                    </tr>
-                    <tr
-                        v-for="item in items"
-                        :key="item.id"
-                    >
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.name }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <ItemsTable
+            :items="items"
+            :addItem="addItem"
+        />
         <div>
             <h2>Recipes</h2>
             <table>
@@ -141,7 +105,7 @@
 </template>
 
 <script lang="ts">
-type Item = {
+export type Item = {
     id: number
     name: string
 }
@@ -159,14 +123,14 @@ type Recipe = {
     }
 }
 
+import ItemsTable from './ItemsTable.vue'
+
 export default {
     name: 'ItemsRecipes',
 
     data() {
         return {
-            itemID: 0,
             recipeID: 0,
-            itemName: '',
             recipeName: '',
             itemInputID: '',
             itemInputQuantity: 0,
@@ -178,14 +142,8 @@ export default {
     },
 
     methods: {
-        addItem() {
-            this.items.push({
-                id: this.itemID,
-                name: this.itemName,
-            })
-
-            this.itemName = ''
-            this.itemID++
+        addItem(item: Item) {
+            this.items.push(item)
         },
         resetInputs() {
             this.recipeName = ''
@@ -210,6 +168,10 @@ export default {
             this.recipeID++
             this.resetInputs()
         },
+    },
+
+    components: {
+        ItemsTable,
     },
 }
 </script>
