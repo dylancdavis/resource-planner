@@ -9,6 +9,10 @@
             :recipes="recipes"
             :addRecipe="addRecipe"
         />
+        <RecipePlan
+            :items="items"
+            :recipes="recipes"
+        />
     </div>
 </template>
 
@@ -33,6 +37,7 @@ export type Recipe = {
 
 import ItemsTable from './ItemsTable.vue'
 import RecipesTable from './RecipesTable.vue'
+import RecipePlan from './RecipePlan.vue'
 
 export default {
     name: 'ItemsRecipes',
@@ -56,6 +61,7 @@ export default {
     components: {
         ItemsTable,
         RecipesTable,
+        RecipePlan,
     },
 }
 </script>
