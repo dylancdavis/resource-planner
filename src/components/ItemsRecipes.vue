@@ -1,6 +1,4 @@
 <template>
-    <!-- "this is way too big and should be refactored immediately!!" -->
-    <!-- "yes." -->
     <div class="table-wrapper">
         <ItemsTable
             :items="items"
