@@ -35,6 +35,7 @@ export type Recipe = {
     }
 }
 
+import { exampleItems, exampleRecipes } from '../constants/example.ts'
 import ItemsTable from './ItemsTable.vue'
 import RecipesTable from './RecipesTable.vue'
 import RecipePlan from './RecipePlan.vue'
@@ -44,8 +45,8 @@ export default {
 
     data() {
         return {
-            items: [] as Item[],
-            recipes: [] as Recipe[],
+            items: exampleItems as Item[],
+            recipes: exampleRecipes as Recipe[],
         }
     },
 
