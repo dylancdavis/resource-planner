@@ -24,9 +24,9 @@ jobs:
         node-version: latest
         cache: pnpm
     - name: Install Dependencies
-      run: npm install
+      run: pnpm install
     - name: Build Application
-      run: npm run build-only
+      run: pnpm build-only
     - name: Upload Files
       id: deployment
       uses: actions/upload-pages-artifact@v3
