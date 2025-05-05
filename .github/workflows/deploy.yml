@@ -1,12 +1,9 @@
 # This workflow will install project dependencies, build the application to dist/, and then upload and publish the static files to GitHub Pages
-# TODO: ensure that for PR trigger, we only check building, don't deploy
 
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
