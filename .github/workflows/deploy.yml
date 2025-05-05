@@ -1,0 +1,45 @@
+# This workflow will install project dependencies, build the application to dist/, and then upload and publish the static files to GitHub Pages
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main", "github-pages" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: latest
+        cache: pnpm
+    - name: Install Dependencies
+      run: pnpm install
+    - name: Build Application
+      run: pnpm build-only
+    - name: Upload Files
+      id: deployment
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: dist/
+  deploy:
+    needs: build # specifies that we depend on the above job
+    permissions: # necessary to grant the job permission to perform a pages deployment
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page-url }}
+    runs-on: ubuntu-latest
+    steps:
+     - name: Deploy to GitHub Pages
+       id: deployment
+       uses: actions/deploy-pages@v4
+      
