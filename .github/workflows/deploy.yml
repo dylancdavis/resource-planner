@@ -30,11 +30,14 @@ jobs:
       with:
         path: dist/
   deploy:
+    needs: build # specifies that we depend on the above job
+    permissions: # necessary to grant the job permission to perform a pages deployment
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page-url }}
     runs-on: ubuntu-latest
-    needs: build
     steps:
      - name: Deploy to GitHub Pages
        id: deployment
