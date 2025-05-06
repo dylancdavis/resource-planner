@@ -25,13 +25,24 @@
                 v-model.number="itemCount"
             />
         </div>
-        <h3>Required Input:</h3>
-        <div v-if="recipePlan">{{ recipePlan.count }}x {{ recipePlan.item.name }}</div>
+        <h3>Required Inputs:</h3>
+        <div v-if="recipePlan">
+            <ul>
+                <li
+                    v-for="(value, key) in recipePlan"
+                    :key="key"
+                >
+                    {{ items.find(({ id }) => id === Number(key))?.name }} ({{ value }}x)
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { addItem } from '@/utils/counter'
+
 import type { PropType } from 'vue'
 import type { Item, Recipe } from './ItemsRecipes.vue'
 
@@ -54,8 +65,13 @@ export default defineComponent({
         }
     },
     computed: {
+        /** Returns a list of IDs of the items that cannot be produced by a recipe. */
         baseItemIDs() {
-            const recipeOutputs = this.recipes.map((recipe) => recipe.output.itemID)
+            const recipeOutputStrings = this.recipes.reduce(
+                (ids, recipe) => ids.concat(Object.keys(recipe.outputs)),
+                [] as string[],
+            )
+            const recipeOutputs = recipeOutputStrings.map(Number)
             const baseItems = this.items.filter((item) => !recipeOutputs.includes(item.id))
             return baseItems.map((item) => item.id)
         },
@@ -63,28 +79,29 @@ export default defineComponent({
             if (this.selectedItem === null || this.itemCount <= 0) {
                 return null
             }
-            let currentItemId = this.selectedItem
-            let currentCount = this.itemCount
-            while (!this.baseItemIDs.includes(currentItemId)) {
-                const recipe = this.recipes.find((recipe) => recipe.output.itemID === currentItemId)
-                if (!recipe) {
+            const counter = { [this.selectedItem]: this.itemCount }
+
+            while (Object.keys(counter).some((id) => !this.baseItemIDs.includes(Number(id)))) {
+                const nonBaseItemId = Number(
+                    Object.keys(counter).find((id) => !this.baseItemIDs.includes(Number(id))),
+                )
+                const validRecipe = this.recipes.find((recipe) =>
+                    Object.keys(recipe.outputs).includes(String(nonBaseItemId)),
+                )
+                if (!validRecipe) {
                     throw new Error(
-                        `Expected to be able to find a recipe for ${currentItemId} but none found`,
+                        `Expected to find a recipe for Item ${nonBaseItemId} but none found`,
                     )
                 }
-                const recipeMultiple = Math.ceil(currentCount / recipe.output.quantity) // we round number of recipes up
-                const recipeInputCount = recipe.input.quantity * recipeMultiple
-                currentItemId = recipe.input.itemID
-                currentCount = recipeInputCount
+                const requiredCount = counter[nonBaseItemId]
+                const recipeMultiple = Math.ceil(requiredCount / validRecipe.outputs[nonBaseItemId])
+                delete counter[nonBaseItemId]
+                for (const key in validRecipe.inputs) {
+                    const amountToAdd = validRecipe.inputs[key] * recipeMultiple
+                    addItem(counter, key, amountToAdd)
+                }
             }
-            const currentItem = this.items.find((item) => item.id === currentItemId)
-            if (!currentItem) {
-                throw new Error(`Expected to be able to find item ${currentItemId} but none found`)
-            }
-            return {
-                item: currentItem,
-                count: currentCount,
-            }
+            return counter
         },
     },
 })

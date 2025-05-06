@@ -22,52 +22,76 @@
                         />
                     </td>
                     <td>
-                        <select
-                            v-model="itemInputID"
-                            :disabled="items.length === 0"
-                        >
-                            <option value="">Select an Input</option>
-                            <option
-                                v-for="item in items"
-                                :key="item.id.toString()"
-                                :value="item.id"
+                        <div>
+                            <select
+                                v-model="itemInputID"
+                                :disabled="items.length === 0"
                             >
-                                {{ item.name }}
-                            </option>
-                        </select>
-                        <input
-                            type="number"
-                            v-model="itemInputQuantity"
-                        />
+                                <option value="">Select an Input</option>
+                                <option
+                                    v-for="item in items"
+                                    :key="item.id.toString()"
+                                    :value="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                            <input
+                                type="number"
+                                v-model="itemInputQuantity"
+                            />
+                            <button @click="addInput">+</button>
+                        </div>
+                        <ul>
+                            <li
+                                v-for="(value, key) in inputItems"
+                                :key="key"
+                            >
+                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                    value
+                                }}x)
+                            </li>
+                        </ul>
                     </td>
                     <td>
-                        <select
-                            v-model="itemOutputID"
-                            :disabled="items.length === 0"
-                        >
-                            <option value="">Select an Output</option>
-                            <option
-                                v-for="item in items"
-                                :key="item.id.toString()"
-                                :value="item.id"
+                        <div>
+                            <select
+                                v-model="itemOutputID"
+                                :disabled="items.length === 0"
                             >
-                                {{ item.name }}
-                            </option>
-                        </select>
-                        <input
-                            type="number"
-                            v-model="itemOutputQuantity"
-                        />
+                                <option value="">Select an Output</option>
+                                <option
+                                    v-for="item in items"
+                                    :key="item.id.toString()"
+                                    :value="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                            <input
+                                type="number"
+                                v-model="itemOutputQuantity"
+                            />
+                            <button @click="addOutput">+</button>
+                        </div>
+                        <ul>
+                            <li
+                                v-for="(value, key) in outputItems"
+                                :key="key"
+                            >
+                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                    value
+                                }}x)
+                            </li>
+                        </ul>
                     </td>
                     <td>
                         <button
                             type="button"
                             @click="handleAdd"
                             :disabled="
-                                itemInputID === '' ||
-                                itemOutputID === '' ||
-                                itemInputQuantity === 0 ||
-                                itemOutputQuantity === 0
+                                Object.keys(inputItems).length === 0 ||
+                                Object.keys(outputItems).length === 0
                             "
                         >
                             Add Recipe
@@ -81,14 +105,28 @@
                     <td>{{ recipe.id }}</td>
                     <td>{{ recipe.name }}</td>
                     <td>
-                        {{ items.find(({ id }) => id === recipe.input.itemID)?.name }} ({{
-                            recipe.input.quantity
-                        }}x)
+                        <ul>
+                            <li
+                                v-for="(value, key) in recipe.inputs"
+                                :key="key"
+                            >
+                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                    value
+                                }}x)
+                            </li>
+                        </ul>
                     </td>
                     <td>
-                        {{ items.find(({ id }) => id === recipe.output.itemID)?.name }} ({{
-                            recipe.output.quantity
-                        }}x)
+                        <ul>
+                            <li
+                                v-for="(value, key) in recipe.outputs"
+                                :key="key"
+                            >
+                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                    value
+                                }}x)
+                            </li>
+                        </ul>
                     </td>
                 </tr>
             </tbody>
@@ -98,8 +136,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 import type { PropType } from 'vue'
 import type { Recipe, Item } from './ItemsRecipes.vue'
+import { addItem, type IDCounter } from '../utils/counter.ts'
 
 export default defineComponent({
     props: {
@@ -123,21 +163,29 @@ export default defineComponent({
             itemInputQuantity: 0,
             itemOutputID: '',
             itemOutputQuantity: 0,
+            inputItems: {} as IDCounter,
+            outputItems: {} as IDCounter,
         }
     },
     methods: {
+        addInput() {
+            const itemID = Number(this.itemInputID)
+            addItem(this.inputItems, itemID, this.itemInputQuantity)
+            this.itemInputID = ''
+            this.itemInputQuantity = 0
+        },
+        addOutput() {
+            const itemID = Number(this.itemOutputID)
+            addItem(this.outputItems, itemID, this.itemOutputQuantity)
+            this.itemOutputID = ''
+            this.itemOutputQuantity = 0
+        },
         handleAdd() {
             this.addRecipe({
                 id: this.recipes.length,
                 name: this.recipeName,
-                input: {
-                    itemID: Number(this.itemInputID),
-                    quantity: this.itemInputQuantity,
-                },
-                output: {
-                    itemID: Number(this.itemOutputID),
-                    quantity: this.itemOutputQuantity,
-                },
+                inputs: this.inputItems,
+                outputs: this.outputItems,
             })
             this.resetInputs()
         },
@@ -147,6 +195,8 @@ export default defineComponent({
             this.itemInputQuantity = 0
             this.itemOutputID = ''
             this.itemOutputQuantity = 0
+            this.inputItems = {} as IDCounter
+            this.outputItems = {} as IDCounter
         },
     },
 })
