@@ -17,6 +17,10 @@ export const exampleItems: Item[] = [
         id: 3,
         name: 'Ladder',
     },
+    {
+        id: 4,
+        name: 'Wooden Pickaxe',
+    },
 ]
 
 export const exampleRecipes: Recipe[] = [
@@ -48,6 +52,17 @@ export const exampleRecipes: Recipe[] = [
         },
         outputs: {
             3: 3,
+        },
+    },
+    {
+        id: 3,
+        name: 'Wooden Pickaxe',
+        inputs: {
+            1: 3,
+            2: 2,
+        },
+        outputs: {
+            4: 1,
         },
     },
 ]
