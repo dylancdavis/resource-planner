@@ -31,7 +31,7 @@ export const exampleRecipes: Recipe[] = [
         },
     },
     {
-        id: 0,
+        id: 1,
         name: 'Sticks',
         inputs: {
             1: 2,
@@ -41,7 +41,7 @@ export const exampleRecipes: Recipe[] = [
         },
     },
     {
-        id: 0,
+        id: 2,
         name: 'Ladder',
         inputs: {
             2: 7,
