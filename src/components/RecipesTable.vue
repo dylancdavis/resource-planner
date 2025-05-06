@@ -44,10 +44,12 @@
                         </div>
                         <ul>
                             <li
-                                v-for="(key, value) in inputItems"
+                                v-for="(value, key) in inputItems"
                                 :key="key"
                             >
-                                {{ items.find(({ id }) => id === key)?.name }} ({{ value }}x)
+                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                    value
+                                }}x)
                             </li>
                         </ul>
                     </td>
@@ -74,10 +76,12 @@
                         </div>
                         <ul>
                             <li
-                                v-for="(key, value) in outputItems"
+                                v-for="(value, key) in outputItems"
                                 :key="key"
                             >
-                                {{ items.find(({ id }) => id === key)?.name }} ({{ value }}x)
+                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                    value
+                                }}x)
                             </li>
                         </ul>
                     </td>
@@ -86,10 +90,8 @@
                             type="button"
                             @click="handleAdd"
                             :disabled="
-                                itemInputID === '' ||
-                                itemOutputID === '' ||
-                                itemInputQuantity === 0 ||
-                                itemOutputQuantity === 0
+                                Object.keys(inputItems).length === 0 ||
+                                Object.keys(outputItems).length === 0
                             "
                         >
                             Add Recipe
@@ -105,20 +107,24 @@
                     <td>
                         <ul>
                             <li
-                                v-for="(key, value) in recipe.outputs"
+                                v-for="(value, key) in recipe.outputs"
                                 :key="key"
                             >
-                                {{ items.find(({ id }) => id === key)?.name }} ({{ value }}x)
+                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                    value
+                                }}x)
                             </li>
                         </ul>
                     </td>
                     <td>
                         <ul>
                             <li
-                                v-for="(key, value) in recipe.inputs"
+                                v-for="(value, key) in recipe.inputs"
                                 :key="key"
                             >
-                                {{ items.find(({ id }) => id === key)?.name }} ({{ value }}x)
+                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                    value
+                                }}x)
                             </li>
                         </ul>
                     </td>
@@ -170,7 +176,7 @@ export default defineComponent({
         },
         addOutput() {
             const itemID = Number(this.itemOutputID)
-            addItem(this.inputItems, itemID, this.itemOutputQuantity)
+            addItem(this.outputItems, itemID, this.itemOutputQuantity)
             this.itemOutputID = ''
             this.itemOutputQuantity = 0
         },
