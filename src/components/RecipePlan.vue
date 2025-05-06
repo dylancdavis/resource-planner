@@ -54,8 +54,13 @@ export default defineComponent({
         }
     },
     computed: {
+        /** Returns a list of IDs of the items that cannot be produced by a recipe. */
         baseItemIDs() {
-            const recipeOutputs = this.recipes.map((recipe) => recipe.output.itemID)
+            const recipeOutputStrings = this.recipes.reduce(
+                (ids, recipe) => ids.concat(Object.keys(recipe.outputs)),
+                [] as string[],
+            )
+            const recipeOutputs = recipeOutputStrings.map(Number)
             const baseItems = this.items.filter((item) => !recipeOutputs.includes(item.id))
             return baseItems.map((item) => item.id)
         },
