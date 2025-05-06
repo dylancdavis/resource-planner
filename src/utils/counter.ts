@@ -34,3 +34,10 @@ export function removeItem(c: Counter, k: Key, count?: number): void {
         if (c[k] <= 0) delete c[k]
     }
 }
+
+/** Adds all the items from `from` to the counter `to`. Doesn't modify the items in `from`. */
+export function copyInto(to: Counter, from: Counter) {
+    for (const key in from) {
+        addItem(to, key, from[key])
+    }
+}
