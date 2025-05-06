@@ -4,6 +4,10 @@ export type Counter = {
     [K in Key]: number
 }
 
+export type IDCounter = {
+    [K in number]: number
+}
+
 /**  Adds `count` of `item` to a counter, adding the key if it does not already exist.
  * Defaults to `1` if `count` is omitted. */
 export function addItem(c: Counter, k: Key, count?: number): void {

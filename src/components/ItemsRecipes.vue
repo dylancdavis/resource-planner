@@ -25,28 +25,23 @@ export type Item = {
 export type Recipe = {
     id: number
     name: string
-    input: {
-        itemID: number
-        quantity: number
-    }
-    output: {
-        itemID: number
-        quantity: number
-    }
+    inputs: IDCounter
+    outputs: IDCounter
 }
 
 import { exampleItems, exampleRecipes } from '../constants/example.ts'
 import ItemsTable from './ItemsTable.vue'
 import RecipesTable from './RecipesTable.vue'
 import RecipePlan from './RecipePlan.vue'
+import type { IDCounter } from '@/utils/counter.ts'
 
 export default {
     name: 'ItemsRecipes',
 
     data() {
         return {
-            items: exampleItems as Item[],
-            recipes: exampleRecipes as Recipe[],
+            items: exampleItems,
+            recipes: exampleRecipes,
         }
     },
 

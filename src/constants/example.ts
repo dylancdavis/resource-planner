@@ -1,4 +1,6 @@
-export const exampleItems = [
+import type { Recipe, Item } from '@/components/ItemsRecipes.vue'
+
+export const exampleItems: Item[] = [
     {
         id: 0,
         name: 'Log',
@@ -17,38 +19,35 @@ export const exampleItems = [
     },
 ]
 
-export const exampleRecipes = [
+export const exampleRecipes: Recipe[] = [
     {
+        id: 0,
         name: 'Planks',
-        input: {
-            itemID: 0,
-            quantity: 1,
+        inputs: {
+            0: 1,
         },
-        output: {
-            itemID: 1,
-            quantity: 4,
+        outputs: {
+            1: 4,
         },
     },
     {
+        id: 0,
         name: 'Sticks',
-        input: {
-            itemID: 1,
-            quantity: 2,
+        inputs: {
+            1: 2,
         },
-        output: {
-            itemID: 2,
-            quantity: 4,
+        outputs: {
+            2: 4,
         },
     },
     {
+        id: 0,
         name: 'Ladder',
-        input: {
-            itemID: 2,
-            quantity: 7,
+        inputs: {
+            2: 7,
         },
-        output: {
-            itemID: 3,
-            quantity: 3,
+        outputs: {
+            3: 3,
         },
     },
 ]
