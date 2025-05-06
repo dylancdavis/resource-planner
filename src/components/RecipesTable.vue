@@ -107,7 +107,7 @@
                     <td>
                         <ul>
                             <li
-                                v-for="(value, key) in recipe.outputs"
+                                v-for="(value, key) in recipe.inputs"
                                 :key="key"
                             >
                                 {{ items.find(({ id }) => id === Number(key))?.name }} ({{
@@ -119,7 +119,7 @@
                     <td>
                         <ul>
                             <li
-                                v-for="(value, key) in recipe.inputs"
+                                v-for="(value, key) in recipe.outputs"
                                 :key="key"
                             >
                                 {{ items.find(({ id }) => id === Number(key))?.name }} ({{
