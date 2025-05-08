@@ -15,3 +15,9 @@ pnpm dev
 
 The web server can then be accessed at http://localhost:5173/.
 
+## Building & Deploying
+
+The application can be built by running `pnpm build`, which will compile the project into `dist/`.
+
+The repository will automatically run a script to deploy any changes to GitHub Pages on pushes to the `main` branch.
+
