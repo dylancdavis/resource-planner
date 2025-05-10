@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex flex-col gap-2">
         <h2>Items</h2>
         <table class="zebra">
             <thead>
