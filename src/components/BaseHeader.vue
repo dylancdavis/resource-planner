@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h1>Resource Planner</h1>
+        <h1 class="title">Resource Planner</h1>
     </header>
 </template>
 
@@ -17,5 +17,10 @@ header {
     height: 64px;
     align-items: center;
     justify-content: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
 }
 </style>

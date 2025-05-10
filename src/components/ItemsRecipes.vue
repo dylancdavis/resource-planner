@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .table-wrapper {
     display: flex;
     width: 100%;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Items</h2>
-        <table>
+        <table class="zebra">
             <thead>
                 <tr>
                     <th>ID</th>

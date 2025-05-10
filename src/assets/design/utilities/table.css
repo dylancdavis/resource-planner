@@ -1,0 +1,31 @@
+@import '../variables/spacing.css';
+@import '../variables/color.css';
+@import '../variables/borderRadius.css';
+
+table {
+    border-radius: var(--br-medium);
+    border-collapse: collapse;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px var(--gray-300);
+    overflow: hidden;
+}
+
+td,
+th {
+    border: 1px solid var(--gray-300);
+    padding: var(--space-1);
+}
+
+table th {
+    background-color: var(--gray-200);
+    font-weight: 600;
+    text-align: left;
+}
+
+.zebra tbody tr:nth-child(odd) {
+    background-color: var(--gray-100);
+}
+
+.zebra tbody tr:nth-child(even) {
+    background-color: var(--white);
+}

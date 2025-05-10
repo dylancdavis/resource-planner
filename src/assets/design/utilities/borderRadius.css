@@ -1,0 +1,14 @@
+@import '../variables/borderRadius.css';
+
+.br-1 {
+    border-radius: var(--br-small)
+}
+
+.br-2 {
+    border-radius: var(--br-medium)
+}
+
+.br-3 {
+    border-radius: var(--br-large);
+}
+

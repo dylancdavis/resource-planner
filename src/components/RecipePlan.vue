@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="flex flex-col gap-2">
         <h2>Recipe Plan</h2>
         <h3>Specify an Output:</h3>
-        <div>
+        <div class="flex gap-2">
             <label for="item-select">Select Item:</label>
             <select
                 id="item-select"
@@ -17,7 +17,7 @@
                 </option>
             </select>
         </div>
-        <div>
+        <div class="flex gap-2">
             <label for="item-count">Item Count:</label>
             <input
                 type="number"

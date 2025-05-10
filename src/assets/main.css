@@ -1,1 +1,10 @@
 @import './base.css';
+@import './design/variables/color.css';
+@import './design/variables/spacing.css';
+@import './design/utilities/borderRadius.css';
+@import './design/utilities/margin.css';
+@import './design/utilities/padding.css';
+@import './design/utilities/flexbox.css';
+@import './design/utilities/gap.css';
+@import './design/utilities/table.css';
+@import './design/utilities/dimensions.css';

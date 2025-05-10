@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="flex flex-col gap-2">
         <h2>Recipes</h2>
-        <table>
+        <table class="zebra">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -22,7 +22,7 @@
                         />
                     </td>
                     <td>
-                        <div>
+                        <div class="flex gap-2">
                             <select
                                 v-model="itemInputID"
                                 :disabled="items.length === 0"
@@ -54,7 +54,7 @@
                         </ul>
                     </td>
                     <td>
-                        <div>
+                        <div class="flex gap-2">
                             <select
                                 v-model="itemOutputID"
                                 :disabled="items.length === 0"
@@ -201,3 +201,6 @@ export default defineComponent({
     },
 })
 </script>
+
+<style>
+</style>

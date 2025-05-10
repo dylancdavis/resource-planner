@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 main {
     padding: 16px;
     flex: 1;
