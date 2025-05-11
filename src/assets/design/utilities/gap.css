@@ -1,7 +1,11 @@
 @import '../variables/spacing.css';
 
 .gap-0 {
-    gap: 0;
+    gap: var(--space-0);
+}
+
+.gap-0_5 {
+    gap: var(--space-0_5);
 }
 
 .gap-1 {

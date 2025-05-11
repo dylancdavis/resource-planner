@@ -4,6 +4,10 @@
     margin: 0;
 }
 
+.m-0_5 {
+    margin: var(--space-0_5);
+}
+
 .m-1 {
     margin: var(--space-1);
 }
@@ -38,6 +42,10 @@
 
 .mt-0 {
     margin-top: 0;
+}
+
+.mt-0_5 {
+    margin-top: var(--space-0_5);
 }
 
 .mt-1 {
@@ -76,6 +84,10 @@
     margin-bottom: 0;
 }
 
+.mb-0_5 {
+    margin-bottom: var(--space-0_5);
+}
+
 .mb-1 {
     margin-bottom: var(--space-1);
 }
@@ -112,6 +124,10 @@
     margin-left: 0;
 }
 
+.ml-0_5 {
+    margin-left: var(--space-0_5);
+}
+
 .ml-1 {
     margin-left: var(--space-1);
 }
@@ -146,6 +162,10 @@
 
 .mr-0 {
     margin-right: 0;
+}
+
+.mr-0_5 {
+    margin-right: var(--space-0_5);
 }
 
 .mr-1 {

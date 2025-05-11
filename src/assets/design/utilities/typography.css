@@ -1,0 +1,211 @@
+@import '../variables/typography.css';
+
+.xs-light {
+    font-size: var(--font-sz-xs);
+    font-weight: var(--font-wt-light);
+}
+
+.xs-regular {
+    font-size: var(--font-sz-xs);
+    font-weight: var(--font-wt-regular);
+}
+
+.xs-medium {
+    font-size: var(--font-sz-xs);
+    font-weight: var(--font-wt-medium);
+}
+
+.xs-semibold {
+    font-size: var(--font-sz-xs);
+    font-weight: var(--font-wt-semibold);
+}
+
+.xs-bold {
+    font-size: var(--font-sz-xs);
+    font-weight: var(--font-wt-bold);
+}
+
+.xs-extrabold {
+    font-size: var(--font-sz-xs);
+    font-weight: var(--font-wt-extrabold);
+}
+
+.sm-light {
+    font-size: var(--font-sz-sm);
+    font-weight: var(--font-wt-light);
+}
+
+.sm-regular {
+    font-size: var(--font-sz-sm);
+    font-weight: var(--font-wt-regular);
+}
+
+.sm-medium {
+    font-size: var(--font-sz-sm);
+    font-weight: var(--font-wt-medium);
+}
+
+.sm-semibold {
+    font-size: var(--font-sz-sm);
+    font-weight: var(--font-wt-semibold);
+}
+
+.sm-bold {
+    font-size: var(--font-sz-sm);
+    font-weight: var(--font-wt-bold);
+}
+
+.sm-extrabold {
+    font-size: var(--font-sz-sm);
+    font-weight: var(--font-wt-extrabold);
+}
+
+.md-light {
+    font-size: var(--font-sz-md);
+    font-weight: var(--font-wt-light);
+}
+
+.md-regular {
+    font-size: var(--font-sz-md);
+    font-weight: var(--font-wt-regular);
+}
+
+.md-medium {
+    font-size: var(--font-sz-md);
+    font-weight: var(--font-wt-medium);
+}
+
+.md-semibold {
+    font-size: var(--font-sz-md);
+    font-weight: var(--font-wt-semibold);
+}
+
+.md-bold {
+    font-size: var(--font-sz-md);
+    font-weight: var(--font-wt-bold);
+}
+
+.md-extrabold {
+    font-size: var(--font-sz-md);
+    font-weight: var(--font-wt-extrabold);
+}
+
+.lg-light {
+    font-size: var(--font-sz-lg);
+    font-weight: var(--font-wt-light);
+}
+
+.lg-regular {
+    font-size: var(--font-sz-lg);
+    font-weight: var(--font-wt-regular);
+}
+
+.lg-medium {
+    font-size: var(--font-sz-lg);
+    font-weight: var(--font-wt-medium);
+}
+
+.lg-semibold {
+    font-size: var(--font-sz-lg);
+    font-weight: var(--font-wt-semibold);
+}
+
+.lg-bold {
+    font-size: var(--font-sz-lg);
+    font-weight: var(--font-wt-bold);
+}
+
+.lg-extrabold {
+    font-size: var(--font-sz-lg);
+    font-weight: var(--font-wt-extrabold);
+}
+
+.xl-light {
+    font-size: var(--font-sz-xl);
+    font-weight: var(--font-wt-light);
+}
+
+.xl-regular {
+    font-size: var(--font-sz-xl);
+    font-weight: var(--font-wt-regular);
+}
+
+.xl-medium {
+    font-size: var(--font-sz-xl);
+    font-weight: var(--font-wt-medium);
+}
+
+.xl-semibold {
+    font-size: var(--font-sz-xl);
+    font-weight: var(--font-wt-semibold);
+}
+
+.xl-bold {
+    font-size: var(--font-sz-xl);
+    font-weight: var(--font-wt-bold);
+}
+
+.xl-extrabold {
+    font-size: var(--font-sz-xl);
+    font-weight: var(--font-wt-extrabold);
+}
+
+.xxl-light {
+    font-size: var(--font-sz-xxl);
+    font-weight: var(--font-wt-light);
+}
+
+.xxl-regular {
+    font-size: var(--font-sz-xxl);
+    font-weight: var(--font-wt-regular);
+}
+
+.xxl-medium {
+    font-size: var(--font-sz-xxl);
+    font-weight: var(--font-wt-medium);
+}
+
+.xxl-semibold {
+    font-size: var(--font-sz-xxl);
+    font-weight: var(--font-wt-semibold);
+}
+
+.xxl-bold {
+    font-size: var(--font-sz-xxl);
+    font-weight: var(--font-wt-bold);
+}
+
+.xxl-extrabold {
+    font-size: var(--font-sz-xxl);
+    font-weight: var(--font-wt-extrabold);
+}
+
+.xxxl-light {
+    font-size: var(--font-sz-xxxl);
+    font-weight: var(--font-wt-light);
+}
+
+.xxxl-regular {
+    font-size: var(--font-sz-xxxl);
+    font-weight: var(--font-wt-regular);
+}
+
+.xxxl-medium {
+    font-size: var(--font-sz-xxxl);
+    font-weight: var(--font-wt-medium);
+}
+
+.xxxl-semibold {
+    font-size: var(--font-sz-xxxl);
+    font-weight: var(--font-wt-semibold);
+}
+
+.xxxl-bold {
+    font-size: var(--font-sz-xxxl);
+    font-weight: var(--font-wt-bold);
+}
+
+.xxxl-extrabold {
+    font-size: var(--font-sz-xxxl);
+    font-weight: var(--font-wt-extrabold);
+}

@@ -1,6 +1,6 @@
-@import '../variables/spacing.css';
-@import '../variables/color.css';
-@import '../variables/borderRadius.css';
+@import './variables/spacing.css';
+@import './variables/color.css';
+@import './variables/borderRadius.css';
 
 table {
     border-radius: var(--br-medium);

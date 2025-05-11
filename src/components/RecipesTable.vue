@@ -1,48 +1,40 @@
 <template>
     <div class="flex flex-col gap-2">
         <h2>Recipes</h2>
-        <table class="zebra">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Recipe Name</th>
-                    <th>Input</th>
-                    <th>Output</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ recipes.length }}</td>
-                    <td>
-                        <input
-                            v-model="recipeName"
-                            type="text"
-                            placeholder="recipe name"
-                        />
-                    </td>
-                    <td>
+        <div class="flex flex-col gap-6">
+            <div class="recipe-creator flex flex-col gap-3">
+                <BaseInput
+                    v-model="recipeName"
+                    type="text"
+                    label-text="Recipe Name"
+                    :placeholder="'e.g. &quot;Plank&quot;'"
+                />
+                <div class="recipe-creator__inputs-outputs-container flex gap-7">
+                    <div class="inputs flex flex-col gap-2">
+                        <h3>Inputs</h3>
                         <div class="flex gap-2">
-                            <select
-                                v-model="itemInputID"
-                                :disabled="items.length === 0"
-                            >
-                                <option value="">Select an Input</option>
-                                <option
-                                    v-for="item in items"
-                                    :key="item.id.toString()"
-                                    :value="item.id"
+                            <div class="flex gap-2">
+                                <select
+                                    v-model="itemInputID"
+                                    :disabled="items.length === 0"
                                 >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                            <input
-                                type="number"
-                                v-model="itemInputQuantity"
-                            />
-                            <button @click="addInput">+</button>
+                                    <option value="">Select an Item</option>
+                                    <option
+                                        v-for="item in items"
+                                        :key="item.id.toString()"
+                                        :value="item.id"
+                                    >
+                                        {{ item.name }}
+                                    </option>
+                                </select>
+                                <input
+                                    type="number"
+                                    v-model="itemInputQuantity"
+                                />
+                                <button @click="addInput">+</button>
+                            </div>
                         </div>
-                        <ul>
+                        <ul v-if="Object.keys(inputItems).length > 0">
                             <li
                                 v-for="(value, key) in inputItems"
                                 :key="key"
@@ -52,14 +44,15 @@
                                 }}x)
                             </li>
                         </ul>
-                    </td>
-                    <td>
+                    </div>
+                    <div class="outputs flex flex-col gap-2">
+                        <h3>Outputs</h3>
                         <div class="flex gap-2">
                             <select
                                 v-model="itemOutputID"
                                 :disabled="items.length === 0"
                             >
-                                <option value="">Select an Output</option>
+                                <option value="">Select an Item</option>
                                 <option
                                     v-for="item in items"
                                     :key="item.id.toString()"
@@ -74,7 +67,7 @@
                             />
                             <button @click="addOutput">+</button>
                         </div>
-                        <ul>
+                        <ul v-if="Object.keys(outputItems).length > 0">
                             <li
                                 v-for="(value, key) in outputItems"
                                 :key="key"
@@ -84,53 +77,63 @@
                                 }}x)
                             </li>
                         </ul>
-                    </td>
-                    <td>
-                        <button
-                            type="button"
-                            @click="handleAdd"
-                            :disabled="
-                                Object.keys(inputItems).length === 0 ||
-                                Object.keys(outputItems).length === 0
-                            "
-                        >
-                            Add Recipe
-                        </button>
-                    </td>
-                </tr>
-                <tr
-                    v-for="recipe in recipes"
-                    :key="recipe.id"
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    @click="handleAdd"
+                    :disabled="
+                        Object.keys(inputItems).length === 0 ||
+                        Object.keys(outputItems).length === 0
+                    "
                 >
-                    <td>{{ recipe.id }}</td>
-                    <td>{{ recipe.name }}</td>
-                    <td>
-                        <ul>
-                            <li
-                                v-for="(value, key) in recipe.inputs"
-                                :key="key"
-                            >
-                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
-                                    value
-                                }}x)
-                            </li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li
-                                v-for="(value, key) in recipe.outputs"
-                                :key="key"
-                            >
-                                {{ items.find(({ id }) => id === Number(key))?.name }} ({{
-                                    value
-                                }}x)
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    Add Recipe
+                </button>
+            </div>
+            <table class="zebra">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Recipe Name</th>
+                        <th>Input</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        v-for="recipe in recipes"
+                        :key="recipe.id"
+                    >
+                        <td>{{ recipe.id }}</td>
+                        <td>{{ recipe.name }}</td>
+                        <td>
+                            <ul>
+                                <li
+                                    v-for="(value, key) in recipe.inputs"
+                                    :key="key"
+                                >
+                                    {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                        value
+                                    }}x)
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li
+                                    v-for="(value, key) in recipe.outputs"
+                                    :key="key"
+                                >
+                                    {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                        value
+                                    }}x)
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -140,8 +143,12 @@ import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import type { Recipe, Item } from './ItemsRecipes.vue'
 import { addItem, type IDCounter } from '../utils/counter.ts'
+import BaseInput from './BaseInput.vue'
 
 export default defineComponent({
+    components: {
+        BaseInput,
+    },
     props: {
         items: {
             type: Array as PropType<Array<Item>>,
@@ -202,5 +209,4 @@ export default defineComponent({
 })
 </script>
 
-<style>
-</style>
+<style></style>

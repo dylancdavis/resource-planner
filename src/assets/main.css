@@ -6,5 +6,6 @@
 @import './design/utilities/padding.css';
 @import './design/utilities/flexbox.css';
 @import './design/utilities/gap.css';
-@import './design/utilities/table.css';
+@import './design/table.css';
 @import './design/utilities/dimensions.css';
+@import './design/utilities/typography.css';

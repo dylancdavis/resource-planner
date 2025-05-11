@@ -1,0 +1,16 @@
+:root {
+    --font-sz-xs: 0.75rem;
+    --font-sz-sm: 0.875rem;
+    --font-sz-md: 1rem;
+    --font-sz-lg: 1.25rem;
+    --font-sz-xl: 1.5rem;
+    --font-sz-xxl: 2rem;
+    --font-sz-xxxl: 3rem;
+
+    --font-wt-light: 300;
+    --font-wt-regular: 400;
+    --font-wt-medium: 500;
+    --font-wt-semibold: 600;
+    --font-wt-bold: 700;
+    --font-wt-extrabold: 800;
+}
