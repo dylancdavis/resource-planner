@@ -1,7 +1,7 @@
 <template>
     <BaseLayout>
-        <h2>Welcome to Recipe Planner</h2>
-        <span>Please begin by uploading a recipe below.</span>
+        <h2>Welcome to Resource Planner</h2>
+        <span>Please begin by adding a recipe below.</span>
         <ItemsRecipes />
     </BaseLayout>
 </template>

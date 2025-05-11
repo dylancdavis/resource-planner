@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col gap-2">
-        <h2>Items</h2>
+        <h2>Add Item</h2>
         <div class="flex flex-col gap-6">
             <div class="flex flex-col gap-3">
                 <BaseInput
@@ -16,23 +16,26 @@
                     Add Item
                 </button>
             </div>
-            <table class="zebra">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Item Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        v-for="item in items"
-                        :key="item.id"
-                    >
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.name }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="flex flex-col gap-2">
+                <h3>Items</h3>
+                <table class="zebra">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Item Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            v-for="item in items"
+                            :key="item.id"
+                        >
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.name }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>

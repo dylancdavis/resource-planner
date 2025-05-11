@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col gap-2">
-        <h2>Recipes</h2>
+        <h2>Add Recipe</h2>
         <div class="flex flex-col gap-6">
             <div class="recipe-creator flex flex-col gap-3">
                 <BaseInput
@@ -90,49 +90,52 @@
                     Add Recipe
                 </button>
             </div>
-            <table class="zebra">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Recipe Name</th>
-                        <th>Input</th>
-                        <th>Output</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        v-for="recipe in recipes"
-                        :key="recipe.id"
-                    >
-                        <td>{{ recipe.id }}</td>
-                        <td>{{ recipe.name }}</td>
-                        <td>
-                            <ul>
-                                <li
-                                    v-for="(value, key) in recipe.inputs"
-                                    :key="key"
-                                >
-                                    {{ items.find(({ id }) => id === Number(key))?.name }} ({{
-                                        value
-                                    }}x)
-                                </li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li
-                                    v-for="(value, key) in recipe.outputs"
-                                    :key="key"
-                                >
-                                    {{ items.find(({ id }) => id === Number(key))?.name }} ({{
-                                        value
-                                    }}x)
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="flex flex-col gap-2">
+                <h3>Recipes</h3>
+                <table class="zebra">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Recipe Name</th>
+                            <th>Input</th>
+                            <th>Output</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            v-for="recipe in recipes"
+                            :key="recipe.id"
+                        >
+                            <td>{{ recipe.id }}</td>
+                            <td>{{ recipe.name }}</td>
+                            <td>
+                                <ul>
+                                    <li
+                                        v-for="(value, key) in recipe.inputs"
+                                        :key="key"
+                                    >
+                                        {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                            value
+                                        }}x)
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li
+                                        v-for="(value, key) in recipe.outputs"
+                                        :key="key"
+                                    >
+                                        {{ items.find(({ id }) => id === Number(key))?.name }} ({{
+                                            value
+                                        }}x)
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>
