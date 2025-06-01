@@ -41,10 +41,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { addItem } from '@/utils/counter'
 
 import type { PropType } from 'vue'
 import type { Item, Recipe } from './ItemsRecipes.vue'
+import { reduceToBase } from '@/utils/recipes'
 
 export default defineComponent({
     name: 'RecipePlan',
@@ -80,28 +80,7 @@ export default defineComponent({
                 return null
             }
             const counter = { [this.selectedItem]: this.itemCount }
-
-            while (Object.keys(counter).some((id) => !this.baseItemIDs.includes(Number(id)))) {
-                const nonBaseItemId = Number(
-                    Object.keys(counter).find((id) => !this.baseItemIDs.includes(Number(id))),
-                )
-                const validRecipe = this.recipes.find((recipe) =>
-                    Object.keys(recipe.outputs).includes(String(nonBaseItemId)),
-                )
-                if (!validRecipe) {
-                    throw new Error(
-                        `Expected to find a recipe for Item ${nonBaseItemId} but none found`,
-                    )
-                }
-                const requiredCount = counter[nonBaseItemId]
-                const recipeMultiple = Math.ceil(requiredCount / validRecipe.outputs[nonBaseItemId])
-                delete counter[nonBaseItemId]
-                for (const key in validRecipe.inputs) {
-                    const amountToAdd = validRecipe.inputs[key] * recipeMultiple
-                    addItem(counter, key, amountToAdd)
-                }
-            }
-            return counter
+            return reduceToBase(counter, this.recipes, this.items)
         },
     },
 })
