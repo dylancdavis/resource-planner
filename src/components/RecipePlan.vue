@@ -44,7 +44,7 @@ import { defineComponent } from 'vue'
 
 import type { PropType } from 'vue'
 import type { Item, Recipe } from './ItemsRecipes.vue'
-import { reduceToBase } from '@/utils/recipes'
+import { computeInputs } from '@/utils/recipes'
 
 export default defineComponent({
     name: 'RecipePlan',
@@ -80,7 +80,7 @@ export default defineComponent({
                 return null
             }
             const counter = { [this.selectedItem]: this.itemCount }
-            return reduceToBase(counter, this.recipes, this.items)
+            return computeInputs(counter, this.recipes, this.items)
         },
     },
 })

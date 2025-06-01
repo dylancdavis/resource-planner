@@ -11,7 +11,7 @@ export function getBaseItems(recipes: Recipe[], items: Item[]) {
     return baseItems.map((item) => item.id)
 }
 
-export function reduceToBase(counter: Counter, recipes: Recipe[], items: Item[]): Counter {
+export function computeInputs(counter: Counter, recipes: Recipe[], items: Item[]): Counter {
     const baseItemIDs = getBaseItems(recipes, items)
 
     while (Object.keys(counter).some((id) => !baseItemIDs.includes(Number(id)))) {
